@@ -7,10 +7,7 @@ import com.stackroute.login.service.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value="api/v1")
@@ -21,14 +18,14 @@ public class UserController {
     public UserController(UserServiceInterface userService) {
         this.userService = userService;
     }
-    @GetMapping("/login")
-    public ResponseEntity<String> authenticateUser(@RequestParam String username,@RequestParam String password) throws UserNotFoundException, WrongPasswordException {
+    @PostMapping("/login")
+    public ResponseEntity<String> authenticateUser(@RequestBody UserCredentials user) throws UserNotFoundException, WrongPasswordException {
 
     ResponseEntity<String> responseEntity;
     try {
 
-        userService.checkUserName(new UserCredentials("",""));
-        responseEntity=new ResponseEntity<>("bravo", HttpStatus.OK);
+        userService.checkUserName(user);
+        responseEntity = new ResponseEntity<String>("Successfully Logged In", HttpStatus.OK);
     }
     catch (Exception e){
         responseEntity=new ResponseEntity<>("loser", HttpStatus.BAD_GATEWAY);
@@ -36,5 +33,6 @@ public class UserController {
     }
     return responseEntity;
     }
+
 
 }
