@@ -1,4 +1,4 @@
-package com.stackroute.login.exception;
+package com.stackroute.exception;
 
 public class WrongPasswordException extends Exception {
     private String message;

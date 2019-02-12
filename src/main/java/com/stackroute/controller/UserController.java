@@ -1,9 +1,9 @@
-package com.stackroute.login.controller;
+package com.stackroute.controller;
 
-import com.stackroute.login.domain.UserCredentials;
-import com.stackroute.login.exception.UserNotFoundException;
-import com.stackroute.login.exception.WrongPasswordException;
-import com.stackroute.login.service.UserServiceInterface;
+import com.stackroute.domain.UserCredentials;
+import com.stackroute.exception.UserNotFoundException;
+import com.stackroute.exception.WrongPasswordException;
+import com.stackroute.service.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

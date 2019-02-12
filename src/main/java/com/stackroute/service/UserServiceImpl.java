@@ -1,11 +1,9 @@
-package com.stackroute.login.service;
-import javax.transaction.Transactional;
-import org.hibernate.Hibernate;
-import org.hibernate.SessionFactory;
-import com.stackroute.login.domain.UserCredentials;
-import com.stackroute.login.exception.UserNotFoundException;
-import com.stackroute.login.exception.WrongPasswordException;
-import com.stackroute.login.repository.UserRepository;
+package com.stackroute.service;
+
+import com.stackroute.repository.UserRepository;
+import com.stackroute.domain.UserCredentials;
+import com.stackroute.exception.UserNotFoundException;
+import com.stackroute.exception.WrongPasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +19,8 @@ public class UserServiceImpl implements UserServiceInterface {
     @Override
     public UserCredentials checkUserName(UserCredentials user) throws UserNotFoundException,WrongPasswordException {
 
-            Optional<UserCredentials> savedUser=userRepository.findById(user.getUserName());
-            if(!userRepository.existsById(user.getUserName())){
+            Optional<UserCredentials> savedUser=userRepository.findById(user.getEmail());
+            if(!userRepository.existsById(user.getEmail())){
                 throw new UserNotFoundException("User doesnot exists");
             }
             if(!(user.getPassword().equals(savedUser.get().getPassword()))){

@@ -1,6 +1,6 @@
-package com.stackroute.login.repository;
+package com.stackroute.repository;
 
-import com.stackroute.login.domain.UserCredentials;
+import com.stackroute.domain.UserCredentials;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

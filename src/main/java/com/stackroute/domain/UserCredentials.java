@@ -1,4 +1,4 @@
-package com.stackroute.login.domain;
+package com.stackroute.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class UserCredentials {
     @Id
-    private  String userName;
+    private  String email;
     @Column
     private String password;
 }
